@@ -8,10 +8,10 @@
 // Firebase Authentication and your Firestore/Storage security rules.
 
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBuNc8RzZLp_kp1-cHFGpVqenWF6ubAxSw",
+  authDomain: "mealplan-c04f1.firebaseapp.com",
+  projectId: "mealplan-c04f1",
+  storageBucket: "mealplan-c04f1.firebasestorage.app",
+  messagingSenderId: "534144119898",
+  appId: "1:534144119898:web:7ec1d4a923c7eda5965463",
 };
