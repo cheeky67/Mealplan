@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harvest — Your week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .stub {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4rem;
+    gap: 1rem;
+  }
+  .stub h1 { font-family: var(--font-display); font-weight: 500; font-size: 2rem; margin: 0; }
+  .stub p { color: var(--ink-soft); max-width: 32rem; }
+</style>
+</head>
+<body>
+  <div class="stub">
+    <a class="wordmark" href="index.html">Harvest</a>
+    <h1>You're in, <span id="who">friend</span>.</h1>
+    <p>This is where the weekly meal board and grocery list will live. For now, this page just confirms sign in worked.</p>
+    <button class="btn-primary" id="btn-signout" style="width:auto;">Sign out</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { firebaseConfig } from "./firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "index.html";
+        return;
+      }
+      document.getElementById("who").textContent = user.displayName || user.email;
+    });
+
+    document.getElementById("btn-signout").addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
